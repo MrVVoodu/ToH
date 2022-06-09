@@ -16,7 +16,7 @@ import { updateHero } from '../state/app.actions';
   styleUrls: ['./hero-detail.component.css']
 })
 export class HeroDetailComponent implements OnInit {
-  @Input() hero$?: Observable<Hero|undefined>
+  hero$?: Observable<Hero|undefined>
 
   
 
@@ -34,11 +34,6 @@ export class HeroDetailComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.hero$ = this.store.select(heroSelector(id));
     }
-  // getHero(): void {
-  //   const id = Number(this.route.snapshot.paramMap.get('id'));
-  //   this.heroService.getHero(id)
-  //     .subscribe(hero => this.hero = hero);
-  // }
 
   goBack(): void {
     this.location.back();
