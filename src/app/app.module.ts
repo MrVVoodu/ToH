@@ -20,6 +20,7 @@ import { StoreModule } from '@ngrx/store';
 import { appReducer } from './state/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { HeroEffects } from './effects/app.effects';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   imports: [
@@ -27,17 +28,17 @@ import { HeroEffects } from './effects/app.effects';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last 25 states
-      //logOnly: environment.production, // Restrict extension to log-only mode
-      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
-    }),
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot( InMemoryDataService, { dataEncapsulation: false }),
     StoreModule.forRoot({ appstate: appReducer}),
-    EffectsModule.forRoot([HeroEffects])
+    EffectsModule.forRoot([HeroEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      //logOnly: environment.production, // Restrict extension to log-only mode
+      logOnly: environment.production, // Pauses recording actions and state changes when the extension window is not open
+    })
   ],
   declarations: [
     AppComponent,
