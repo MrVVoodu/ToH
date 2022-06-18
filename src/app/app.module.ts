@@ -21,6 +21,7 @@ import { appReducer } from './state/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { HeroEffects } from './effects/app.effects';
 import { environment } from 'src/environments/environment';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
@@ -46,7 +47,8 @@ import { environment } from 'src/environments/environment';
     HeroesComponent,
     HeroDetailComponent,
     MessagesComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    LoginComponent
   ],
   bootstrap: [ AppComponent ]
 })

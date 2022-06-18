@@ -20,3 +20,8 @@ export const dashHeroSelector = createSelector(
   (state: { appstate: AppState }) => state.appstate,
   (appstate: AppState) => appstate.heroes.slice(0, 4)
 );
+
+export const isLoggedInSelector = createSelector(
+  (state: { appstate: AppState }) => state.appstate,
+  (appstate: AppState) => appstate.isLogged
+);
